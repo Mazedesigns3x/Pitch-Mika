@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O₂ Black Week Pitch: iPhone 17 Pro Gewinnspiel</title>
+    <style>
+        /* O₂ CI & Black Week Style */
+        :root {
+            --o2-blue: #0050FF; /* CI-Blau, basierend auf Recherche (Beyond Blue) */
+            --o2-blue-dark: #003099;
+            --black-week-bg: #000000;
+            --white: #ffffff;
+            --gold-accent: #FFD700; /* Gold/Yellow Akzent */
+            --text-color: var(--white);
+            --font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: var(--black-week-bg);
+            color: var(--text-color);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1a1a1a; /* Leicht abgesetzter, dunkler Container */
+            box-shadow: 0 0 30px rgba(0, 80, 255, 0.5); /* Leuchtender blauer Rand */
+            border-radius: 10px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 5px solid var(--gold-accent);
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: var(--white);
+            font-size: 3em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: var(--o2-blue);
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        /* Sektionen */
+        .section {
+            padding: 20px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #333;
+        }
+
+        h2 {
+            color: var(--gold-accent);
+            font-size: 2.2em;
+            border-left: 8px solid var(--o2-blue);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* Highlight Box (Kampagnenziel / Fazit) */
+        .highlight-box {
+            background-color: var(--o2-blue-dark);
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+            border: 3px solid var(--gold-accent);
+        }
+
+        .highlight-box h3 {
+            color: var(--white);
+            font-size: 2.5em;
+            margin-top: 0;
+        }
+
+        .highlight-text {
+            color: var(--white);
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+
+        /* Ablauf / Timeline */
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .step {
+            flex: 1;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 8px;
+            border-top: 5px solid var(--o2-blue);
+        }
+
+        .step-icon {
+            font-size: 3em;
+            color: var(--gold-accent);
+            margin-bottom: 10px;
+        }
+
+        .step h3 {
+            color: var(--white);
+            font-size: 1.4em;
+            margin-top: 0;
+            text-transform: uppercase;
+        }
+
+        /* Partner- & Unternehmensnutzen (Banner) */
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .benefit-item {
+            background-color: #000;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 5px solid var(--gold-accent);
+            font-weight: bold;
+        }
+
+        .benefit-item .icon {
+            color: var(--o2-blue);
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        /* Diagramm (Stilisierte Darstellung) */
+        .chart-container {
+            background-color: #000;
+            padding: 30px 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+
+        .chart-headline {
+            text-align: center;
+            color: var(--gold-accent);
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 300px;
+            padding-bottom: 20px;
+            border-left: 2px solid var(--white);
+            border-bottom: 2px solid var(--white);
+            position: relative;
+        }
+
+        .bar-group {
+            width: 15%;
+            text-align: center;
+        }
+
+        .bar {
+            width: 80%;
+            margin: 0 auto 5px auto;
+            position: relative;
+        }
+
+        .bar-oct {
+            background-color: #555;
+            transition: height 0.5s;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .bar-nov {
+            background-color: var(--o2-blue);
+            transition: height 0.5s;
+            position: absolute;
+            bottom: 0;
+            width: 50%; /* Schmaler, um IST/SOLL zu zeigen */
+            left: 50%;
+            transform: translateX(-50%);
+            border: 2px solid var(--gold-accent);
+        }
+        
+        .bar-label {
+            color: var(--white);
+            font-size: 0.8em;
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: bold;
+        }
+
+        .partner-label {
+            font-size: 0.9em;
+            color: var(--white);
+            margin-top: 5px;
+            font-weight: bold;
+        }
+        
+        .legend {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+        .legend-oct { color: #888; margin-right: 15px; }
+        .legend-nov { color: var(--o2-blue); font-weight: bold; }
+
+
+        /* Wirkmechanismen */
+        .psychology {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .mechanism {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 5px;
+            border-top: 4px solid var(--gold-accent);
+        }
+
+        .mechanism h4 {
+            color: var(--o2-blue);
+            font-size: 1.2em;
+            margin-top: 0;
+        }
+
+        /* Fazit Highlight */
+        .pitch-fazit {
+            background: linear-gradient(90deg, var(--o2-blue-dark) 0%, var(--o2-blue) 100%);
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 40px;
+            text-align: center;
+            border: 5px solid var(--gold-accent);
+        }
+
+        .pitch-fazit h3 {
+            color: var(--gold-accent);
+            font-size: 3em;
+            margin: 0 0 10px 0;
+        }
+        .pitch-fazit p {
+            font-size: 1.6em;
+            color: var(--white);
+            font-weight: bold;
+        }
+
+        /* Icons (Verwendung von Unicode-Symbolen als Platzhalter) */
+        .icon-qr:before { content: '📱'; }
+        .icon-gift:before { content: '🎁'; }
+        .icon-social:before { content: '💬'; }
+        .icon-chart:before { content: '📈'; }
+        .icon-data:before { content: '💾'; }
+        .icon-conversion:before { content: '🎯'; }
+        .icon-money:before { content: '€'; }
+        .icon-handshake:before { content: '🤝'; }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1 style="color: var(--o2-blue);">O₂ Black Week Strategie-Pitch</h1>
+        <p class="subtitle">Exklusives iPhone 17 Pro Gewinnspiel mit O₂ Top Partnern</p>
+    </header>
+
+    <div class="section">
+        <h2><span class="icon-chart"></span> Kampagnenziel: Frequenz, Leads & Postpaid-Power im November</h2>
+        <div class="highlight-box">
+            <h3 style="color: var(--gold-accent);">Frequenz-Booster für die Stores!</h3>
+            <p class="highlight-text">
+                Mehr Laufkundschaft im November, mehr Leads, mehr abgeschlossene Postpaid-Verträge – aufmerksamkeitsstark durch das **neue iPhone 17 Pro** als Hauptgewinn, kombiniert mit sozialem Trostangebot (Amazon-Gutschein & 50%-Rabatt).
+            </p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2><span class="icon-qr"></span> Ablauf – Die 3 Schritte zur Lead-Generierung</h2>
+        <div class="timeline">
+            <div class="step">
+                <span class="step-icon icon-qr"></span>
+                <h3>1. Teilnahme im Store</h3>
+                <p>Lead-Gewinnung NUR im Store (QR-Code-Poster, Papierformular). Sofortiges Mini-Giveaway für alle Teilnehmer.</p>
+            </div>
+            <div class="step" style="border-top-color: var(--gold-accent);">
+                <span class="step-icon icon-social"></span>
+                <h3>2. Gewinnerziehung & PR</h3>
+                <p>Event im Partner-Store. Social-Media-PR (O₂-Brand & lokale Partner-Highlights) maximiert Reichweite & Trust.</p>
+            </div>
+            <div class="step">
+                <span class="step-icon icon-gift"></span>
+                <h3>3. Trostpreis-Ansprache</h3>
+                <p>Digitale Ansprache aller Nicht-Gewinner mit 50%-Rabatt-Aktion und Amazon-Gutschein. Starke 2. Verkaufschance.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2><span class="icon-handshake"></span> Partner- & Unternehmensnutzen: Die Vertriebsvorteile</h2>
+        <div class="benefits">
+            <div class="benefit-item">
+                <span class="icon-chart"></span> Sichtbarer Anstieg der Store-Frequenz
+            </div>
+            <div class="benefit-item">
+                <span class="icon-data"></span> DSGVO-konformer Leadspeicher für Nachkampagnen
+            </div>
+            <div class="benefit-item">
+                <span class="icon-social"></span> Lokales Branding & Social Reach (Gewinner-Event)
+            </div>
+            <div class="benefit-item">
+                <span class="icon-conversion"></span> Jeder Lead wird zur zweiten Verkaufschance (Conversion-Hebel)
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2><span class="icon-chart"></span> Wachstumsprognose: Kartensteigerung November</h2>
+        <div class="chart-container">
+            <div class="chart-headline">
+                BLACK WEEK: <span style="color: var(--o2-blue); font-size: 1.2em;">100 % KARTENWACHSTUM</span> REALISTISCH!
+            </div>
+            <div class="bar-chart">
+                <div class="bar-group">
+                    <div class="bar" style="height: 80%;">
+                        <div class="bar-oct" style="height: 50%;"></div>
+                        <div class="bar-nov" style="height: 100%;">
+                            <span class="bar-label" style="top: -25px; color: var(--gold-accent);">80</span>
+                        </div>
+                    </div>
+                    <div class="partner-label">TDO Solutions (40)</div>
+                </div>
+
+                <div class="bar-group">
+                    <div class="bar" style="height: 68%;">
+                        <div class="bar-oct" style="height: 50%;"></div>
+                        <div class="bar-nov" style="height: 100%;">
+                            <span class="bar-label" style="top: -25px; color: var(--gold-accent);">68</span>
+                        </div>
+                    </div>
+                    <div class="partner-label">Corona Bae (34)</div>
+                </div>
+
+                <div class="bar-group">
+                    <div class="bar" style="height: 50%;">
+                        <div class="bar-oct" style="height: 50%;"></div>
+                        <div class="bar-nov" style="height: 100%;">
+                            <span class="bar-label" style="top: -25px; color: var(--gold-accent);">50</span>
+                        </div>
+                    </div>
+                    <div class="partner-label">City Online (25)</div>
+                </div>
+
+                <div class="bar-group">
+                    <div class="bar" style="height: 56%;">
+                        <div class="bar-oct" style="height: 50%;"></div>
+                        <div class="bar-nov" style="height: 100%;">
+                            <span class="bar-label" style="top: -25px; color: var(--gold-accent);">56</span>
+                        </div>
+                    </div>
+                    <div class="partner-label">Tel. Hofgeismar (28)</div>
+                </div>
+
+                <div class="bar-group">
+                    <div class="bar" style="height: 62%;">
+                        <div class="bar-oct" style="height: 50%;"></div>
+                        <div class="bar-nov" style="height: 100%;">
+                            <span class="bar-label" style="top: -25px; color: var(--gold-accent);">62</span>
+                        </div>
+                    </div>
+                    <div class="partner-label">Dreamtel (31)</div>
+                </div>
+            </div>
+            <div class="legend">
+                <span class="legend-oct">IST Oktober (Basis)</span> | 
+                <span class="legend-nov">SOLL November (+100% Ziel)</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2><span class="icon-money"></span> Wirkmechanismen: Business-Psychologie im O₂-Style</h2>
+        <div class="psychology">
+            <div class="mechanism">
+                <h4>Gewinnpsychologie</h4>
+                <p>„Schon das Mitmachen wird belohnt“ (Mini-Giveaway & Trostpreis). **Niemand geht leer aus.** Das senkt die Hemmschwelle zur Lead-Abgabe.</p>
+            </div>
+            <div class="mechanism">
+                <h4>Social Proof & Trust</h4>
+                <p>Gewinnerziehung als lokales Event & Social Media-Boost sorgen für Marktpräsenz & **Community-Trust** in O₂ und Partner.</p>
+            </div>
+            <div class="mechanism">
+                <h4>Call-to-Action</h4>
+                <p>„In der wichtigsten Aktionswoche des Jahres jetzt **doppelt profitieren**!“ (Gewinnchance + Rabatt). Erzeugt Dringlichkeit (Deadline).</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="pitch-fazit">
+        <p style="font-size: 2em; margin-bottom: 20px;">
+            <span style="color: var(--gold-accent);">PITCH-FAZIT FÜR DEN CHEF-ENTSCHEID:</span>
+        </p>
+        <h3>
+            REALER VERTRIEBSSPEZIAL: <br> GARANTIERTE <span style="color: var(--white);">FREQUENZ</span> UND MESSBARE <span style="color: var(--white);">LEADS</span>
+        </h3>
+        <p>
+            Unsere Black Week-Kampagne generiert im O₂-Style reale Frequenz, messbare Leads & bietet die echte Chance auf
+            <strong style="color: var(--gold-accent); font-size: 1.4em;">100 % KARTENSTEIGERUNG</strong>
+            – sofort sichtbarer Vertriebserfolg im November, mit langfristigem Nachlauf durch Datenbank & Kundenbindung.
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>
