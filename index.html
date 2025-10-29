@@ -1,5 +1,5 @@
-
-<!DOCTYPE html>
+# Create a cleaned HTML file with the resolved content
+html_content = """<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -119,7 +119,7 @@
                 <!-- Text -->
                 <div class="lg:col-span-1">
                     <p class="text-lg leading-relaxed">
-                        Durch die Kombination aus **Aufmerksamkeit** (Gewinnspiel) und **Conversion** (Trostangebot) rechnen wir mit einer Verdopplung der Abschlüsse bei stabiler Beratungsfrequenz.
+                        Durch die Kombination aus <strong>Aufmerksamkeit</strong> (Gewinnspiel) und <strong>Conversion</strong> (Trostangebot) rechnen wir mit einer Verdopplung der Abschlüsse bei stabiler Beratungsfrequenz.
                     </p>
                     <p class="mt-4 text-gray-600 font-semibold">
                         <!-- Zielwert angepasst: 160 -> 320 (Verdopplung) -->
@@ -416,3 +416,8 @@
     </script>
 </body>
 </html>
+"""
+with open("/mnt/data/index_clean.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+"/mnt/data/index_clean.html"
